@@ -28,6 +28,13 @@
             width: 100%;
             height: auto;
         }
+        .modal-content{
+            background-image: url("img/mockup nam duong that bao don PNG a.png");
+        }
+        .form{
+            padding-right: 300px;
+            padding-left: 300px;
+        }
 
         .doctor {
             font-size: 150px;
@@ -204,6 +211,9 @@
 
         body {
             background-image: url("http://pirulitoloja.com.br/wp-content/uploads/2017/06/worldwide-connection-background-ipad-wacom-abstract-images-cool-white-background-2000x1200.jpg");
+        }
+        [class*="col-6.form"] {
+            width: 100%;
         }
 
         @media screen and (max-width: 768px) {
@@ -426,6 +436,10 @@
             .btn-order {
                 font-size: 15px;
             }
+            .form{
+                padding-right: 10px;
+                padding-left: 10px;
+            }
         }
     </style>
 </head>
@@ -515,7 +529,7 @@
                 </div>
                 <p style="color: red;font-size: 20px;text-align: justify-all"><b>Lấy lại "bản lĩnh nam giới với Nam
                     Dương
-                    Thất Bảo Sơn</b></p>
+                    Thất Bảo Đơn</b></p>
                 <p style="text-align: justify">Bằng những kiến thức đông ý lâu năm,chúng tôi đã dày công nghiên cứu ra
                     sản
                     phẩm <span
@@ -627,9 +641,7 @@
     </div>
 
     <div class="row register" style="background-color: #94110d">
-        <div class="col-3">
-        </div>
-        <div class="col-6 form">
+        <div class="col align-self-center form">
             <div class="text-white-order font-weight-bold mb-4">* Đặt mua sản phẩm</div>
             <form method="post">
                 <div class="form-group mt-4">
@@ -642,15 +654,14 @@
                     <input class="form-control" type="text" name="Email" placeholder="Email">
                 </div>
                 <div class="form-group mt-4">
-                            <textarea class="form-control" name="address" cols="30" rows="5"
-                                      placeholder="Địa chỉ">
+                            <textarea class="form-control" name="address" cols="30" rows="5" placeholder="Địa chỉ">
                             </textarea>
                 </div>
                 <div class="form-group btn-register-now">
                     <button type="button" class="btn btn-light" id="btn-submit"
                             name="btn-submit" style="background-color: yellow"
                             value="button" onclick="submit_comment()"><b>
-                        ĐĂNG KÝ NGAY
+                        ĐẶT MUA NGAY
                     </b>
                     </button>
                 </div>
@@ -659,7 +670,6 @@
                 <div class="text-white font-weight-bold mb-4">* Vui lòng đọc kỹ điều kiện sử dụng</div>
             </form>
         </div>
-        <div class="col-3"></div>
     </div>
     <div style="padding-bottom: 15px">
         <h1>
@@ -701,9 +711,9 @@
 </div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: #FF2447">
+        <div class="modal-content" style="background-color: #212529">
             <div class="modal-header">
-                <p><b class="text-center" style="color: white;font-size: 30px">Start Pharn</b></p>
+                <p><b class="text-center" style="color: white;font-size: 30px">Thông Tin Đặt Hàng</b></p>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -725,7 +735,7 @@
                         <button type="button" class="btn btn-danger"
                                 name="btn-submit"
                                 value="button" onclick="submit_comment()"><b>
-                            ĐĂNG KÝ NGAY
+                            ĐẶT MUA NGAY
                         </b>
                         </button>
                     </div>
@@ -748,6 +758,7 @@
         var name = document.getElementById("name").value;
         var phone = document.getElementById("phone").value;
         var address = document.getElementById("address").value;
+        var message="Cảm ơn quý khách đã đặt hàng, chúng tôi sẽ liên hệ lại ngay !";
         Email.send({
             Host: "smtp.gmail.com",
             Username: "p0866017695@gmail.com",
@@ -756,7 +767,7 @@
             From: "p0866017695@gmail.com",
             Subject: "This is the subject",
             Body: "Thông tin khách hàng" + ":" + "Tên" + ":" + name + " " + "Email" + ":" + email + " " + "Địa chỉ" + ":" + address + " " + "Số điện thoại" + ":" + phone,
-        }).then(message => alert(message));
+        })(alert(message));
     }
 </script>
 </body>

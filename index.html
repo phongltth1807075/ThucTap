@@ -53,7 +53,6 @@
         }
 
         .btn-order {
-            /*style="font-size: 25px;color: white"*/
             font-size: 25px;
             color: white;
         }
@@ -533,7 +532,7 @@
                 <p style="text-align: justify">Bằng những kiến thức đông ý lâu năm,chúng tôi đã dày công nghiên cứu ra
                     sản
                     phẩm <span
-                            style="color: red">"Nam Dương Thất Bảo Sơn"</span> -giải pháp hỗ trợ điều trị chức năng sinh
+                            style="color: red">"Nam Dương Thất Bảo Đơn"</span> -giải pháp hỗ trợ điều trị chức năng sinh
                     lí nam giới,có tác dung lâu dài trong việc điều trị rối loạn cương dương,xuất tinh sớm...Mang lại
                     sức khoẻ phong độ tức thời cho phái mạnh</p>
                 <p style="text-align: justify">Bào chế các thảo dược quý hiếm từ vùng Tây bắc Việt Nam,kết hợp với công
@@ -748,7 +747,60 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
+    </div>
+</div>
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #212529">
+            <div class="modal-header">
+                <p><b class="text-center" style="color: white;font-size: 30px">ĐỪNG BỎ LỠ CƠ HỘI NHẬN TƯ VẤN TỪ CHUYÊN GIA</b></p>
+<!--                <p>Chúng tôi rất mong muốn giúp bạn cải thiện chất lượng cuộc sống !</p>-->
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="form-group mt-4">
+                        <input class="form-control" type="text" name="Name" placeholder="Họ và tên" id="name2">
+                    </div>
+                    <div class="form-group mt-4">
+                        <input class="form-control" type="text" name="Phone" placeholder="Số điện thoại" id="phone2">
+                    </div>
+                    <div>
+                        <p style="color: white;"><b>Bạn đang gặp vấn đề gì???</b></p>
+                    </div>
+                    <div class="row" style="color: white">
+                        <div class="col">
+                            <input class="advisory" type="checkbox" name="vehicle1" value="Xuất tinh sớm"> Xuất tinh sớm<br>
+                        </div>
+                        <div class="col">
+                            <input class="advisory" type="checkbox" name="vehicle1" value="Yếu sinh lý"> Yếu sinh lý<br>
+                        </div>
+                    </div>
+                    <div class="row" style="color: white">
+                        <div class="col">
+                            <input class="advisory" type="checkbox" name="vehicle1" value="Liệt dương"> Liệt dương<br>
+                        </div>
+                        <div class="col">
+                            <input class="advisory" type="checkbox" name="vehicle1" value="Rối loạn cương dương"> Rối loạn cương dương<br>
+                        </div>
+                    </div>
+                    <div class="form-group btn-register-now" style="padding-top: 20px">
+                        <button type="button" class="btn btn-danger"
+                                name="btn-submit"
+                                value="button" onclick="submit_advisory()"><b>
+                            NHẬN TƯ VẤN
+                        </b>
+                        </button>
+                    </div>
+                    <div class="text-white font-weight-bold mt-4">* Chúng tôi sẽ liên hệ với bạn trong vòng 24h
+                    </div>
+                    <div class="text-white font-weight-bold mb-4">* Vui lòng đọc kỹ điều kiện sử dụng</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://smtpjs.com/v3/smtp.js"></script>
@@ -769,6 +821,36 @@
             Body: "Thông tin khách hàng" + ":" + "Tên" + ":" + name + " " + "Email" + ":" + email + " " + "Địa chỉ" + ":" + address + " " + "Số điện thoại" + ":" + phone,
         })(alert(message));
     }
+</script>
+<script>
+    function submit_advisory() {
+        var advisory = document.querySelector('.advisory:checked').value;
+        var advisory = null;
+        var inputElements = document.getElementsByClassName('advisory');
+        for(var i=0; inputElements[i]; ++i){
+            if(inputElements[i].checked){
+                advisory = inputElements[i].value;
+                break;
+            }
+        }
+        var name = document.getElementById("name2").value;
+        var phone = document.getElementById("phone2").value;
+        var message2="Chúng tôi sẽ sớm liên lạc với bạn !";
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "p0866017695@gmail.com",
+            Password: "dqzylazfxvcfjuvl",
+            To: 'p0866017695@gmail.com',
+            From: "p0866017695@gmail.com",
+            Subject: "This is the subject",
+            Body: "Thông tin khách hàng cần tư vấn" + ":" + "Tên" + ":" + name + " " + "Số điện thoại" + ":" + phone+" "+"Tình Trạng"+":"+advisory,
+        })(alert(message2));
+    }
+</script>
+<script>
+    setTimeout(function() {
+        $('#Modal').modal();
+    }, 20000);
 </script>
 </body>
 </html>
